@@ -2,14 +2,14 @@ using System;
 
 namespace CleanArchMvc.Domain.Validation
 {
-  public class DomainExceptionValidation : Exception
-  {
-    public DomainExceptionValidation(string error) : base(error) {}
-
-    public static void When(bool hasError, string error)
+    public class DomainExceptionValidation : Exception
     {
-      if (hasError)
-        throw new DomainExceptionValidation(error);
+        public DomainExceptionValidation(string error) : base(error) {}
+
+        public static void When(bool hasError, string error)
+        {
+            if (hasError)
+                throw new DomainExceptionValidation(error);
+        }
     }
-  }
 }
