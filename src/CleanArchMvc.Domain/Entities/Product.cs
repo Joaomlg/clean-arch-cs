@@ -78,7 +78,7 @@ namespace CleanArchMvc.Domain.Entities
 
     private void ValidateImage(string image)
     {
-      DomainExceptionValidation.When(image.Length > 250, "Invalid image name: too long, maximum 250 characteres");
+      DomainExceptionValidation.When(image?.Length > 250, "Invalid image name: too long, maximum 250 characteres");
     }
 
     public int CategoryId { get; set; }
