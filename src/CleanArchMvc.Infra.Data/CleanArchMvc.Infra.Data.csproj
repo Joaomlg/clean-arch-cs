@@ -16,13 +16,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Context" />
-    <Folder Include="EntitiesConfiguration" />
-    <Folder Include="Identity" />
-    <Folder Include="Repositories" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
