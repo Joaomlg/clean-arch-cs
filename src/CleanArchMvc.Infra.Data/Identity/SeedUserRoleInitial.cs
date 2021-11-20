@@ -21,8 +21,8 @@ namespace CleanArchMvc.Infra.Data.Identity
 
         public void SeedUsers()
         {
-            CreateUserInRoleIfNotExists("usuario@localhost", "passwd@123", "User");
-            CreateUserInRoleIfNotExists("admin@localhost", "passwd@123", "Admin");
+            CreateUserInRoleIfNotExists("usuario@localhost", "Passwd@123", "User");
+            CreateUserInRoleIfNotExists("admin@localhost", "Passwd@123", "Admin");
         }
 
         private void CreateUserInRoleIfNotExists(string email, string password, string role)
@@ -65,7 +65,7 @@ namespace CleanArchMvc.Infra.Data.Identity
                     NormalizedName = roleName.ToUpper()
                 };
 
-                _roleManager.CreateAsync(role);
+                var result = _roleManager.CreateAsync(role).Result;
             }
         }
     }
