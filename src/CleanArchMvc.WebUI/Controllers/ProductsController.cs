@@ -1,6 +1,7 @@
 ﻿
 using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchMvc.WebUI.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private IProductService _productService;
@@ -100,6 +102,7 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(productDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet, ActionName("Delete")]
         public async Task<IActionResult> DeleteView(int? id)
         {
@@ -112,6 +115,7 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(productDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
