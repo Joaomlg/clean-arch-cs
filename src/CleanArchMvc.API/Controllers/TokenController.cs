@@ -24,6 +24,23 @@ namespace CleanArchMvc.API.Controllers
             _configuration = configuration;
         }
 
+        [HttpPost("Register")]
+        public async Task<ActionResult<UserToken>> Register([FromBody] RegisterModel userInfo)
+        {
+            var result = await _authentication.RegisterUser(userInfo.Email, userInfo.Password);
+
+            if (!result)
+            {
+                return BadRequest();
+            }
+
+            return GenerateToken(new LoginModel()
+            {
+                Email = userInfo.Email,
+                Password = userInfo.Password
+            });
+        }
+
         [HttpPost("Login")]
         public async Task<ActionResult<UserToken>> Login([FromBody] LoginModel userInfo)
         {
