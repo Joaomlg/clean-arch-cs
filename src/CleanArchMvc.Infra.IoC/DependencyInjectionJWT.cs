@@ -30,7 +30,9 @@ namespace CleanArchMvc.Infra.IoC
                         ValidateIssuer = true,
                         ValidIssuer = configuration["Jwt:Issuer"],
                         ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero
+                        ClockSkew = TimeSpan.Zero,
+                        ValidateAudience = true,
+                        ValidAudience = configuration["Jwt:Audience"]
                     };
                 });
 

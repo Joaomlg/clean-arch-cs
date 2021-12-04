@@ -64,6 +64,7 @@ namespace CleanArchMvc.API.Controllers
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
+            var audience = _configuration["Jwt:Audience"];
             var issuer = _configuration["Jwt:Issuer"];
             var secretKey = _configuration["Jwt:SecretKey"];
 
@@ -74,6 +75,7 @@ namespace CleanArchMvc.API.Controllers
             var expiration = DateTime.UtcNow.AddMinutes(10);
 
             var token = new JwtSecurityToken(
+                audience: audience,
                 issuer: issuer,
                 claims: claims,
                 expires: expiration,
@@ -85,7 +87,6 @@ namespace CleanArchMvc.API.Controllers
             {
                 Token = serializedToken,
                 Expiration = expiration
-
             };
         }
     }
